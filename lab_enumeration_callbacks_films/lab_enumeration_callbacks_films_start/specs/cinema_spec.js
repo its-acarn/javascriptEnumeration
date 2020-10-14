@@ -72,4 +72,24 @@ describe('Cinema', function () {
 		const actual = cinema.filterByYear(2017);
 		assert.deepStrictEqual(actual, [bladeRunner, dunkirk, trainspotting]);
 	});
+
+	it('Cinema should be able to filter films by year--', function () {
+		const actual = cinema.filmsByProperty('year', 2018);
+		assert.deepStrictEqual(actual, [blackPanther]);
+	});
+
+	it('Cinema should be able to filter films by genre--', function () {
+		const actual = cinema.filmsByProperty('genre', 'action');
+		assert.deepStrictEqual(actual, [blackPanther]);
+	});
+
+	it('Cinema should be able to filter films by title--', function () {
+		const actual = cinema.filmsByProperty('title', 'Black Panther');
+		assert.deepStrictEqual(actual, [blackPanther]);
+	});
+
+	it('Cinema should be able to filter films by length--', function () {
+		const actual = cinema.filmsByProperty('length', 134);
+		assert.deepStrictEqual(actual, [blackPanther]);
+	});
 });

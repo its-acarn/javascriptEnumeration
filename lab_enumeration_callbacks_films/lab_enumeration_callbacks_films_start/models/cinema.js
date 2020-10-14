@@ -66,12 +66,15 @@ Cinema.prototype.filterByYear = function (yearToFilter) {
 	const filterFilms = this.films.filter((film) => {
 		return film.year === yearToFilter;
 	});
+	return filterFilms;
+};
 
-	if (filterFilms.length === 0) {
-		return `No films from this year`;
-	} else {
-		return filterFilms;
-	}
+Cinema.prototype.filmsByProperty = function (filterProperty, filterValue) {
+	const filteredList = this.films.filter((film) => {
+		return film[filterProperty] === filterValue;
+	});
+
+	return filteredList;
 };
 
 module.exports = Cinema;
