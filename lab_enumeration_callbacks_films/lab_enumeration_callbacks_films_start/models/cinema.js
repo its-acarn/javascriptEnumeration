@@ -27,4 +27,35 @@ Cinema.prototype.filterByGenre = function (genreToFilter) {
 	return filterFilms;
 };
 
+Cinema.prototype.filterByYear = function (yearToFilter) {
+	const filterFilms = this.films.filter((film) => {
+		return film.year === yearToFilter;
+	});
+
+	if (filterFilms.length === 0) {
+		return `No films from this year`;
+	} else {
+		return filterFilms;
+	}
+};
+
+Cinema.prototype.checkFilmLength = function (filmLengthCheck) {
+	const filterFilms = this.films.filter((film) => {
+		return film.length > filmLengthCheck;
+	});
+	return filterFilms;
+};
+
+Cinema.prototype.totalAllFilmLengths = function () {
+	const filmLengths = this.films.map((film) => {
+		return film.length;
+	});
+
+	const totalFilmsLength = filmLengths.reduce((runningTotal, length) => {
+		return runningTotal + length;
+	}, 0);
+
+	return totalFilmsLength;
+};
+
 module.exports = Cinema;
