@@ -38,8 +38,16 @@ describe('Cinema', function () {
 		]);
 	});
 
-	it('should be able to find a film by title');
-	it('should be able to filter films by genre');
+	it('should be able to find a film by title', function () {
+		const actual = cinema.findByTitle('Moonlight');
+		assert.strictEqual(actual, 'Moonlight');
+	});
+
+	it('should be able to filter films by genre', function () {
+		const actual = cinema.filterByGenre('action');
+		assert.deepStrictEqual(actual, [blackPanther]);
+	});
+
 	it(
 		'should be able to check whether there are some films from a particular year'
 	);
