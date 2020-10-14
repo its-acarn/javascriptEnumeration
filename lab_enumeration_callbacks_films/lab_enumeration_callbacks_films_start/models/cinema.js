@@ -27,15 +27,19 @@ Cinema.prototype.filterByGenre = function (genreToFilter) {
 	return filterFilms;
 };
 
-Cinema.prototype.filterByYear = function (yearToFilter) {
-	const filterFilms = this.films.filter((film) => {
-		return film.year === yearToFilter;
+Cinema.prototype.filmFromYear = function (yearToFind) {
+	const filmYears = this.films.map((film) => {
+		return film.year;
 	});
 
-	if (filterFilms.length === 0) {
-		return `No films from this year`;
+	const isFilm = filmYears.find((year) => {
+		return year === yearToFind;
+	});
+
+	if (isFilm) {
+		return true;
 	} else {
-		return filterFilms;
+		return false;
 	}
 };
 
@@ -56,6 +60,18 @@ Cinema.prototype.totalAllFilmLengths = function () {
 	}, 0);
 
 	return totalFilmsLength;
+};
+
+Cinema.prototype.filterByYear = function (yearToFilter) {
+	const filterFilms = this.films.filter((film) => {
+		return film.year === yearToFilter;
+	});
+
+	if (filterFilms.length === 0) {
+		return `No films from this year`;
+	} else {
+		return filterFilms;
+	}
 };
 
 module.exports = Cinema;
